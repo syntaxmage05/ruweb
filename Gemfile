@@ -6,3 +6,7 @@ source "https://rubygems.org"
 
 gem "rubocop", "~> 1.85"
 gem "rubocop-performance", "~> 1.26", require: false
+
+gem "puma", "~> 7.2"
+
+gem "rack", "~> 3.2"
