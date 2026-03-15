@@ -27,7 +27,7 @@ class App
       "Content-Type": "text/html"
     }
 
-    response_html = router.build_response(env["REQUEST_PATH"])
+    response_html = router.build_response(env)
 
     [200, headers, [response_html]]
   end

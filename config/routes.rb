@@ -7,5 +7,8 @@ Router.draw do
 
   get("/articles") { "All Articles" }
 
-  get("/articles/1") { "First Articles" }
+  get("/articles/1") do |env|
+    puts "Path: #{env['REQUEST_PATH']}"
+    "First Article"
+  end
 end
