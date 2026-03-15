@@ -1,19 +1,25 @@
 # frozen_string_literal: true
 
-require_relative "lib/Router/router"
+require_relative "config/routes"
+# require_relative "lib/Router/router"
 # create a Rack-compliant web application
 class App
-  attr_reader :router
+  #
+  # This is the same as the file in
+  #
+  # config/routes
+  #
+  # attr_reader :router
 
-  def initialize
-    @router = Router.new
+  # def initialize
+  #   @router = Router.new
 
-    router.get("/") { "Fred's Blog" }
+  #   router.get("/") { "Fred's Blog" }
 
-    router.get("/articles") { "All Articles" }
+  #   router.get("/articles") { "All Articles" }
 
-    router.get("/articles/1") { "First Articles" }
-  end
+  #   router.get("/articles/1") { "First Articles" }
+  # end
 
   def call(env)
     # a hash containing response headers
@@ -24,5 +30,19 @@ class App
     response_html = router.build_response(env["REQUEST_PATH"])
 
     [200, headers, [response_html]]
+  end
+
+  private
+
+  #
+  # We are using the Router.instance from the singleton
+  #
+  # to get the router's instance and make it private
+  #
+  # So that we cannot instantiate Router.new
+  #
+
+  def router
+    Router.instance
   end
 end

@@ -1,7 +1,18 @@
 # frozen_string_literal: true
 
+require "singleton"
 # Router system
 class Router
+  include Singleton
+
+  attr_reader :routes
+
+  class << self
+    def draw(&)
+      Router.instance.instance_exec(&)
+    end
+  end
+
   def initialize
     @routes = {}
   end
