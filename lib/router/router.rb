@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "singleton"
-require_relative "controllers/articles_controller"
+require_relative "../../controllers/articles_controller"
 # Router system
 class Router
   include Singleton
@@ -20,7 +20,7 @@ class Router
 
   def get(path, &blk)
     @routes[path] = (blk || lambda { |env|
-      controller_name, action_name = find_controller_action
+      controller_name, action_name = find_controller_action(path)
       controller_klass = constantize(controller_name)
       controller = controller_klass.new(env)
 

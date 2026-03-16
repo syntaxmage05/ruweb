@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # controllers/articles_controller.rb
-class ArticleController
+class ArticlesController
   attr_reader :env
 
   def initialize(env)
